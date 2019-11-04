@@ -22,10 +22,14 @@ struct Helper {
   
   func checkImageByCode(_ codeWeather: Int) -> String {
     switch codeWeather {
-    case 804:
+    case 200-233:
+      return "lightning"
+    case 300-522:
+      return "rainy"
+    case 801,802,803,804:
       return "cloudy"
-    case 604:
-      return "rain"
+    case 800:
+      return "sunny"
     default:
       return "cloudy"
     }

@@ -23,7 +23,7 @@ class WeatherViewController: UIViewController {
   @IBOutlet weak var cityLabel: UILabel!
   @IBOutlet weak var descriptionLabel: UILabel!
 //  @IBOutlet weak var emptyViewImage: UIView!
-  @IBOutlet weak var blankViewImage: UIView!
+//  @IBOutlet weak var blankViewImage: UIView!
   @IBOutlet weak var currentWeatherImage: UIImageView!
   @IBOutlet weak var hourlyWeatherCollectionView: UICollectionView!
   override func viewDidLoad() {
@@ -69,14 +69,14 @@ class WeatherViewController: UIViewController {
       if let response = response {
         self.dailyWeatherList = DailyWeatherViewModel(response)
         DispatchQueue.main.async {
-          self.blankViewImage.isHidden = true
+//          self.blankViewImage.isHidden = true
           self.tableView.reloadData()
           self.tableView.dataSource = self
           self.tableView.delegate = self
         }
       }
       else {
-        self.blankViewImage.isHidden = false
+//        self.blankViewImage.isHidden = false
       }
     }
   }
@@ -106,7 +106,6 @@ extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
     let cell = self.tableView.dequeueReusableCell(withIdentifier: "DailyWeatherCell", for: indexPath) as! DailyWeatherTableViewCell
     let dailyWeatherVM = self.dailyWeatherList.dailyWeatherAtIndex(indexPath.row)
     cell.dayLabel.text = Helper().dateConverter(dailyWeatherVM.datetime)
-    cell.descriptionLabel.text = dailyWeatherVM.weather.description
     cell.tempratureLabel.text = "\(Int(dailyWeatherVM.temp))°"
     cell.dailyWeatherImage.image = UIImage(named: Helper().checkImageByCode(dailyWeatherVM.weather.code))
     return cell
@@ -141,7 +140,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
         else {
           if let geocodeLocation = response {
             guard let placemark = geocodeLocation.first else {return}
-            if let place = placemark.subAdministrativeArea {
+            if let place = placemark.subLocality {
               self.getCurrentWeather(place)
               self.setupTableView(place)
             }
@@ -163,9 +162,9 @@ extension WeatherViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     let hourlyWeatherVM = self.hourlyWeatherList.hourlyWeatherAtIndex(indexPath.row)
     
-    cell.timeLable.text = hourlyWeatherVM.timestamp_local
+//    cell.timeLable.text = Helper().UTCToLocal(date: hourlyWeatherVM.timestamp_local)
     cell.tempratureLabel.text = "\(Int(hourlyWeatherVM.temp))°"
-    
+    cell.hourlyImage.image = UIImage(named: Helper().checkImageByCode(hourlyWeatherVM.weather.code)) 
     return cell
   }
   

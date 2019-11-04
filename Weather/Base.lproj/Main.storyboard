@@ -8,6 +8,14 @@
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Bold.otf">
+            <string>Inter-Bold</string>
+        </array>
+        <array key="Inter-Regular.otf">
+            <string>Inter-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Weather Today-->
         <scene sceneID="tne-QT-ifu">
@@ -42,110 +50,64 @@
                                                                         <constraint firstAttribute="width" constant="200" id="7mh-Ci-dy0"/>
                                                                         <constraint firstAttribute="height" constant="24" id="f0i-AA-k6M"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7z-Cc-UNy">
-                                                                    <rect key="frame" x="20" y="37" width="200" height="18"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="18" id="heS-Uu-2TW"/>
-                                                                        <constraint firstAttribute="width" constant="200" id="st3-cR-0XF"/>
-                                                                    </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                    <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="20"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F3Z-u0-RaM">
-                                                                    <rect key="frame" x="330" y="17" width="64" height="30"/>
-                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                                    <rect key="frame" x="327.5" y="17.5" width="66.5" height="30"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="30" id="YKz-Zu-sjb"/>
+                                                                        <constraint firstAttribute="width" constant="66.5" id="e0x-G8-nAz"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="25"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rain" translatesAutoresizingMaskIntoConstraints="NO" id="obE-wO-AbP">
-                                                                    <rect key="frame" x="279" y="15" width="35" height="35"/>
+                                                                    <rect key="frame" x="277.5" y="17.5" width="30" height="30"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="35" id="06J-vJ-sNc"/>
-                                                                        <constraint firstAttribute="width" constant="35" id="Mh6-eY-50K"/>
+                                                                        <constraint firstAttribute="height" constant="30" id="5CZ-sK-UGm"/>
+                                                                        <constraint firstAttribute="width" constant="30" id="g5F-MK-A5d"/>
                                                                     </constraints>
                                                                 </imageView>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="y7z-Cc-UNy" firstAttribute="leading" secondItem="oXx-KI-LKK" secondAttribute="leading" constant="20" id="1Pp-aV-Efd"/>
-                                                                <constraint firstItem="F3Z-u0-RaM" firstAttribute="trailing" secondItem="oXx-KI-LKK" secondAttribute="trailingMargin" id="3Os-Wq-QxP"/>
-                                                                <constraint firstItem="F3Z-u0-RaM" firstAttribute="top" secondItem="oXx-KI-LKK" secondAttribute="top" constant="17" id="DKI-Uh-Um8"/>
-                                                                <constraint firstItem="obE-wO-AbP" firstAttribute="centerY" secondItem="oXx-KI-LKK" secondAttribute="centerY" id="Gsz-Hb-EAk"/>
-                                                                <constraint firstItem="F3Z-u0-RaM" firstAttribute="leading" secondItem="obE-wO-AbP" secondAttribute="trailing" constant="16" id="OHC-ac-0hE"/>
-                                                                <constraint firstAttribute="bottom" secondItem="F3Z-u0-RaM" secondAttribute="bottom" constant="18" id="PUh-Ot-EfZ"/>
+                                                                <constraint firstItem="F3Z-u0-RaM" firstAttribute="centerY" secondItem="oXx-KI-LKK" secondAttribute="centerY" id="Ezv-dR-aZl"/>
                                                                 <constraint firstItem="iKu-aQ-B37" firstAttribute="top" secondItem="oXx-KI-LKK" secondAttribute="top" constant="10" id="Ugd-JF-BBS"/>
-                                                                <constraint firstAttribute="bottom" secondItem="obE-wO-AbP" secondAttribute="bottom" constant="15" id="Vvq-th-6oo"/>
+                                                                <constraint firstItem="obE-wO-AbP" firstAttribute="centerY" secondItem="oXx-KI-LKK" secondAttribute="centerY" id="YTT-lX-8es"/>
                                                                 <constraint firstItem="iKu-aQ-B37" firstAttribute="leading" secondItem="oXx-KI-LKK" secondAttribute="leading" constant="20" id="YwD-wv-j6o"/>
-                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="F3Z-u0-RaM" secondAttribute="trailing" constant="20" symbolic="YES" id="ZQ6-za-PIU"/>
-                                                                <constraint firstItem="obE-wO-AbP" firstAttribute="top" secondItem="oXx-KI-LKK" secondAttribute="top" constant="15" id="vFq-NI-9MN"/>
-                                                                <constraint firstAttribute="bottom" secondItem="y7z-Cc-UNy" secondAttribute="bottom" constant="10" id="yHf-fb-9RN"/>
+                                                                <constraint firstItem="F3Z-u0-RaM" firstAttribute="leading" secondItem="obE-wO-AbP" secondAttribute="trailing" constant="20" id="j83-Ck-nNB"/>
+                                                                <constraint firstAttribute="trailing" secondItem="F3Z-u0-RaM" secondAttribute="trailing" constant="20" id="tOt-g9-lbx"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
                                                         <connections>
                                                             <outlet property="dailyWeatherImage" destination="obE-wO-AbP" id="ROx-wS-LeD"/>
                                                             <outlet property="dayLabel" destination="iKu-aQ-B37" id="Sg1-cA-nz4"/>
-                                                            <outlet property="descriptionLabel" destination="y7z-Cc-UNy" id="WXC-2s-ius"/>
                                                             <outlet property="tempratureLabel" destination="F3Z-u0-RaM" id="JL6-Cv-Mhq"/>
                                                         </connections>
                                                     </tableViewCell>
                                                 </prototypes>
                                             </tableView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GB3-oP-ErH">
-                                                <rect key="frame" x="0.0" y="12" width="414" height="391"/>
-                                                <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blank" translatesAutoresizingMaskIntoConstraints="NO" id="4zx-cU-Wal">
-                                                        <rect key="frame" x="107" y="95.5" width="200" height="200"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="200" id="Cw3-D0-Kq8"/>
-                                                            <constraint firstAttribute="width" constant="200" id="opm-fA-9gj"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily weather not found, try another location" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIp-W3-cg1">
-                                                        <rect key="frame" x="107" y="315.5" width="200" height="41"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="200" id="IAb-F9-H15"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                <constraints>
-                                                    <constraint firstItem="4zx-cU-Wal" firstAttribute="centerY" secondItem="GB3-oP-ErH" secondAttribute="centerY" id="AQs-4W-HnS"/>
-                                                    <constraint firstItem="BIp-W3-cg1" firstAttribute="top" secondItem="4zx-cU-Wal" secondAttribute="bottom" constant="20" id="FKk-fp-TsK"/>
-                                                    <constraint firstItem="BIp-W3-cg1" firstAttribute="centerX" secondItem="GB3-oP-ErH" secondAttribute="centerX" id="oJA-1O-Lc7"/>
-                                                    <constraint firstItem="4zx-cU-Wal" firstAttribute="centerX" secondItem="GB3-oP-ErH" secondAttribute="centerX" id="wcd-Le-YPd"/>
-                                                </constraints>
-                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="FIF-2x-7Xe" firstAttribute="width" secondItem="hCg-w3-YST" secondAttribute="width" id="0RR-RG-3qn"/>
-                                            <constraint firstAttribute="bottom" secondItem="GB3-oP-ErH" secondAttribute="bottom" id="0Si-c9-kfI"/>
                                             <constraint firstAttribute="trailing" secondItem="FIF-2x-7Xe" secondAttribute="trailing" id="1Zo-U3-gpT"/>
-                                            <constraint firstAttribute="trailing" secondItem="GB3-oP-ErH" secondAttribute="trailing" id="4cI-fI-r9e"/>
                                             <constraint firstItem="FIF-2x-7Xe" firstAttribute="height" secondItem="hCg-w3-YST" secondAttribute="height" multiplier="0.97" id="Zgj-Ct-oVB"/>
-                                            <constraint firstItem="GB3-oP-ErH" firstAttribute="height" secondItem="hCg-w3-YST" secondAttribute="height" multiplier="0.97" id="aIj-Lz-y4G"/>
                                             <constraint firstAttribute="bottom" secondItem="FIF-2x-7Xe" secondAttribute="bottom" id="cr4-OZ-5mr"/>
-                                            <constraint firstItem="GB3-oP-ErH" firstAttribute="leading" secondItem="hCg-w3-YST" secondAttribute="leading" id="gsA-sN-faH"/>
                                             <constraint firstItem="FIF-2x-7Xe" firstAttribute="leading" secondItem="hCg-w3-YST" secondAttribute="leading" id="siz-y2-Cyy"/>
-                                            <constraint firstItem="GB3-oP-ErH" firstAttribute="width" secondItem="hCg-w3-YST" secondAttribute="width" id="vw2-0W-6Uo"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zKB-1d-tLk" userLabel="TopView" customClass="CustomView" customModule="Weather" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="340.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O6F-tz-i8H">
-                                                <rect key="frame" x="175" y="155" width="64" height="30"/>
+                                                <rect key="frame" x="162" y="155" width="90" height="30.5"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="64" id="bui-ec-jJm"/>
+                                                    <constraint firstAttribute="width" constant="90" id="bui-ec-jJm"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="25"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -154,28 +116,28 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </searchBar>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDK-Eg-eq0">
-                                                <rect key="frame" x="107" y="190" width="200" height="24"/>
+                                                <rect key="frame" x="107" y="190.5" width="200" height="24.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="HtB-QS-yoE"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q7o-vE-h5u">
-                                                <rect key="frame" x="107" y="219" width="200" height="18"/>
+                                                <rect key="frame" x="107" y="220" width="200" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="jNd-s0-8TT"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rain" translatesAutoresizingMaskIntoConstraints="NO" id="wo0-Qf-InI">
-                                                <rect key="frame" x="172" y="252" width="70" height="70"/>
+                                                <rect key="frame" x="192" y="242" width="30" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="70" id="fru-fI-ixb"/>
-                                                    <constraint firstAttribute="width" constant="70" id="tPf-Sf-r7s"/>
+                                                    <constraint firstAttribute="width" constant="30" id="cjf-P8-Aho"/>
+                                                    <constraint firstAttribute="height" constant="30" id="fyZ-0U-xFa"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
@@ -188,11 +150,11 @@
                                             <constraint firstItem="v0Q-NI-twp" firstAttribute="width" secondItem="zKB-1d-tLk" secondAttribute="width" id="T3E-PK-Lg2"/>
                                             <constraint firstItem="O6F-tz-i8H" firstAttribute="top" secondItem="v0Q-NI-twp" secondAttribute="bottom" constant="10" id="YAl-IS-Zey"/>
                                             <constraint firstItem="PDK-Eg-eq0" firstAttribute="centerX" secondItem="zKB-1d-tLk" secondAttribute="centerX" id="asW-va-u1H"/>
+                                            <constraint firstItem="wo0-Qf-InI" firstAttribute="top" secondItem="q7o-vE-h5u" secondAttribute="bottom" constant="5" id="b4M-GW-p3f"/>
                                             <constraint firstItem="O6F-tz-i8H" firstAttribute="centerY" secondItem="zKB-1d-tLk" secondAttribute="centerY" id="gwE-ha-DvF"/>
+                                            <constraint firstItem="wo0-Qf-InI" firstAttribute="centerX" secondItem="zKB-1d-tLk" secondAttribute="centerX" id="ncM-Ls-8Hq"/>
                                             <constraint firstItem="q7o-vE-h5u" firstAttribute="centerX" secondItem="zKB-1d-tLk" secondAttribute="centerX" id="qsy-7T-AXc"/>
-                                            <constraint firstItem="wo0-Qf-InI" firstAttribute="centerX" secondItem="zKB-1d-tLk" secondAttribute="centerX" id="ru3-EZ-LkG"/>
                                             <constraint firstItem="PDK-Eg-eq0" firstAttribute="top" secondItem="O6F-tz-i8H" secondAttribute="bottom" constant="5" id="ust-vu-4gn"/>
-                                            <constraint firstItem="wo0-Qf-InI" firstAttribute="top" secondItem="q7o-vE-h5u" secondAttribute="bottom" constant="15" id="wLT-g9-8Ow"/>
                                         </constraints>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Fv8-Jp-Ntp">
@@ -204,6 +166,11 @@
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
+                                        <view key="backgroundView" contentMode="scaleToFill" id="FrS-94-mES">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="142.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        </view>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HourlyWeatherCollectionCell" id="jh4-nW-9GU" customClass="HourlyWeatherCollectionViewCell" customModule="Weather" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="-0.5" width="123" height="143"/>
@@ -220,7 +187,7 @@
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="100" id="2Gx-Xw-5T1"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                                    <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -232,11 +199,11 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOw-QR-S9f">
-                                                                    <rect key="frame" x="11.5" y="105" width="100" height="18"/>
+                                                                    <rect key="frame" x="11.5" y="104.5" width="100" height="18.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="100" id="hCH-eC-AfC"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                    <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -310,7 +277,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="blankViewImage" destination="GB3-oP-ErH" id="Eir-fM-OxT"/>
                         <outlet property="cityLabel" destination="PDK-Eg-eq0" id="VSX-gc-JTd"/>
                         <outlet property="currentWeatherImage" destination="wo0-Qf-InI" id="HEr-oI-rDe"/>
                         <outlet property="descriptionLabel" destination="q7o-vE-h5u" id="Hk6-we-ltS"/>
@@ -344,7 +310,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="blank" width="3122" height="2606"/>
         <image name="rain" width="96" height="96"/>
         <image name="refresh" width="25" height="25"/>
     </resources>
