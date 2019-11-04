@@ -23,6 +23,7 @@ class WeatherViewController: UIViewController {
   @IBOutlet weak var descriptionLabel: UILabel!
   @IBOutlet weak var emptyViewImage: UIView!
   @IBOutlet weak var blankViewImage: UIView!
+  @IBOutlet weak var currentWeatherImage: UIImageView!
   override func viewDidLoad() {
     super.viewDidLoad()
     self.locationManager.requestAlwaysAuthorization()
