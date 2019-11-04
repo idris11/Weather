@@ -20,4 +20,10 @@ class HelperTests: XCTestCase {
     
     XCTAssertEqual(self.helper.dateConverter(date), "01-12-2019")
   }
+  
+  func testCheckImageCode() {
+    let code = Int("804")
+    
+    XCTAssertEqual(helper.checkImageByCode(code!), "cloudy")
+  }
 }

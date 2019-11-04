@@ -13,6 +13,12 @@ struct CurrentWeatherModel: Decodable {
 
 struct CurrentWeather: Decodable {
   let city_name: String
-  let weather: WeatherDescription
+  let weather: CurrentWeatherDescription
   let temp: Int
 }
+
+struct CurrentWeatherDescription: Decodable {
+  let description: String
+  let code: String
+}
+

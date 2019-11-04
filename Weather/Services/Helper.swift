@@ -19,4 +19,15 @@ struct Helper {
     }
     return "Date unavailable"
   }
+  
+  func checkImageByCode(_ codeWeather: Int) -> String {
+    switch codeWeather {
+    case 804:
+      return "cloudy"
+    case 604:
+      return "rain"
+    default:
+      return "cloudy"
+    }
+  }
 }

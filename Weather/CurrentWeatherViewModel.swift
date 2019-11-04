@@ -21,4 +21,11 @@ struct CurrentWeatherViewModel {
   var tempratureWeather: String {
     return "\(self.weather.data[0].temp)°"
   }
+  
+  var imageWeather: String {
+    if let code = Int(self.weather.data[0].weather.code) {
+      return Helper().checkImageByCode(code)
+    }
+    return Helper().checkImageByCode(804)
+  }
 }

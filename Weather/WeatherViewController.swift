@@ -13,6 +13,7 @@ import MapKit
 class WeatherViewController: UIViewController {
   var dailyWeatherList: DailyWeatherViewModel!
   var currentWeather: CurrentWeatherViewModel?
+  var hourlyWeatherList: HourlyWeatherViewModel!
   let locationManager = CLLocationManager()
   var location:CLLocationManager!
   
@@ -21,9 +22,10 @@ class WeatherViewController: UIViewController {
   @IBOutlet weak var tempratureLabel: UILabel!
   @IBOutlet weak var cityLabel: UILabel!
   @IBOutlet weak var descriptionLabel: UILabel!
-  @IBOutlet weak var emptyViewImage: UIView!
+//  @IBOutlet weak var emptyViewImage: UIView!
   @IBOutlet weak var blankViewImage: UIView!
   @IBOutlet weak var currentWeatherImage: UIImageView!
+  @IBOutlet weak var hourlyWeatherCollectionView: UICollectionView!
   override func viewDidLoad() {
     super.viewDidLoad()
     self.locationManager.requestAlwaysAuthorization()
@@ -33,6 +35,7 @@ class WeatherViewController: UIViewController {
         locationManager.startUpdatingLocation()
     }
     self.locationSearchBar.delegate = self
+    self.getHourlyWeather("serpong")
   }
   
   @IBAction func refreshLocation(_ sender: UIBarButtonItem) {
@@ -41,12 +44,12 @@ class WeatherViewController: UIViewController {
   private func getCurrentWeather(_ place: String) {
     Webservice().getCurrentWeather(place) { (result) in
       if let result = result {
-        self.emptyViewImage.isHidden = true
+//        self.emptyViewImage.isHidden = true
         self.currentWeather = CurrentWeatherViewModel(weather: result)
         self.setupView()
       }
       else {
-        self.emptyViewImage.isHidden = false
+//        self.emptyViewImage.isHidden = false
       }
     }
   }
@@ -56,6 +59,7 @@ class WeatherViewController: UIViewController {
       self.cityLabel.text = weather.cityNameWeather
       self.tempratureLabel.text = weather.tempratureWeather
       self.descriptionLabel.text = weather.descriptionWeather
+      self.currentWeatherImage.image = UIImage(named: weather.imageWeather)
     }
   }
   
@@ -76,6 +80,19 @@ class WeatherViewController: UIViewController {
       }
     }
   }
+  
+  private func getHourlyWeather(_ city: String) {
+    Webservice().getHourlyWeather(city) { (response) in
+      if let response = response {
+        self.hourlyWeatherList = HourlyWeatherViewModel(hourlyListWeather: response)
+        DispatchQueue.main.async {
+          self.hourlyWeatherCollectionView.reloadData()
+          self.hourlyWeatherCollectionView.delegate = self
+          self.hourlyWeatherCollectionView.dataSource = self
+        }
+      }
+    }
+  }
 }
 
 extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
@@ -91,6 +108,7 @@ extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
     cell.dayLabel.text = Helper().dateConverter(dailyWeatherVM.datetime)
     cell.descriptionLabel.text = dailyWeatherVM.weather.description
     cell.tempratureLabel.text = "\(Int(dailyWeatherVM.temp))°"
+    cell.dailyWeatherImage.image = UIImage(named: Helper().checkImageByCode(dailyWeatherVM.weather.code))
     return cell
   }
 }
@@ -132,4 +150,24 @@ extension WeatherViewController: CLLocationManagerDelegate {
       }
     }
   }
+}
+
+
+extension WeatherViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return self.hourlyWeatherList.numberOfRowsInSection(section)
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = self.hourlyWeatherCollectionView.dequeueReusableCell(withReuseIdentifier: "HourlyWeatherCollectionCell", for: indexPath) as! HourlyWeatherCollectionViewCell
+    
+    let hourlyWeatherVM = self.hourlyWeatherList.hourlyWeatherAtIndex(indexPath.row)
+    
+    cell.timeLable.text = hourlyWeatherVM.timestamp_local
+    cell.tempratureLabel.text = "\(Int(hourlyWeatherVM.temp))°"
+    
+    return cell
+  }
+  
+  
 }

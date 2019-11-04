@@ -13,10 +13,11 @@ struct DailyWeatherModel: Decodable {
 
 struct DailyWeather: Decodable {
   let temp: Double
-  let weather: WeatherDescription
+  let weather: DailyWeatherDescription
   let datetime: String
 }
 
-struct WeatherDescription: Decodable {
+struct DailyWeatherDescription: Decodable {
   let description: String
+  let code: Int
 }
