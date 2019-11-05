@@ -24,6 +24,12 @@ class HelperTests: XCTestCase {
   func testCheckImageCode() {
     let code = Int("804")
     
-    XCTAssertEqual(helper.checkImageByCode(code!), "cloudy")
+    XCTAssertEqual(self.helper.checkImageByCode(code!), "cloudy")
+  }
+  
+  func testconvertDateTime() {
+    let date = "2019-11-05T07:00:00"
+    
+    XCTAssertEqual(self.helper.convertDateTime(date), "07:00")
   }
 }
