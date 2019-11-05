@@ -34,4 +34,16 @@ struct Helper {
       return "cloudy"
     }
   }
+  
+  func convertDateTime(_ date: String) -> String {
+    let newDate = date+"+07:00"
+    let formatter = ISO8601DateFormatter()
+    let dateAfterFormat = formatter.date(from: newDate)
+    let dateFormatterPrint = DateFormatter()
+    dateFormatterPrint.dateFormat = "HH:mm"
+    if let dateAfterFormat = dateAfterFormat {
+      return dateFormatterPrint.string(from: dateAfterFormat)
+    }
+    return "Date unavailable"
+  }
 }

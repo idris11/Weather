@@ -10,6 +10,9 @@ import Foundation
 struct CurrentWeatherViewModel {
   let weather: CurrentWeatherModel
   
+  init(_ weather: CurrentWeatherModel) {
+    self.weather = weather
+  }
   var cityNameWeather: String {
     return self.weather.data[0].city_name
   }
