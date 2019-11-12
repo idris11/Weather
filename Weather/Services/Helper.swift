@@ -36,14 +36,29 @@ struct Helper {
   }
   
   func convertDateTime(_ date: String) -> String {
-    let newDate = date+"+07:00"
-    let formatter = ISO8601DateFormatter()
-    let dateAfterFormat = formatter.date(from: newDate)
-    let dateFormatterPrint = DateFormatter()
-    dateFormatterPrint.dateFormat = "HH:mm"
-    if let dateAfterFormat = dateAfterFormat {
-      return dateFormatterPrint.string(from: dateAfterFormat)
+    if #available(iOS 10.0, *) {
+      let newDate = date+"+07:00"
+      let formatter = ISO8601DateFormatter()
+      let dateAfterFormat = formatter.date(from: newDate)
+      let dateFormatterPrint = DateFormatter()
+      dateFormatterPrint.dateFormat = "HH:mm"
+      if let dateAfterFormat = dateAfterFormat {
+        return dateFormatterPrint.string(from: dateAfterFormat)
+      }
+      return "Date unavailable"
     }
-    return "Date unavailable"
+    else {
+      let dateFormatterGet = DateFormatter()
+      dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+      let dateFormatterPrint = DateFormatter()
+      dateFormatterPrint.dateFormat = "HH:mm"
+      if let newDate = dateFormatterGet.date(from: date) {
+          return dateFormatterPrint.string(from: newDate)
+      }
+      else {
+        return "Date unavailable"
+      }
+    }
+
   }
 }
