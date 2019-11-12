@@ -16,6 +16,7 @@ class WeatherViewController: UIViewController {
   var hourlyWeatherList: HourlyWeatherViewModel!
   let locationManager = CLLocationManager()
   var location:CLLocationManager!
+  var keywords: String?
   
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var locationSearchBar: UISearchBar!
@@ -40,8 +41,20 @@ class WeatherViewController: UIViewController {
     self.locationSearchBar.delegate = self
   }
   
-  @IBAction func refreshLocation(_ sender: UIBarButtonItem) {
+  private func setupWeather(keyword: String) {
+    self.getCurrentWeather(keyword)
+    self.setupTableView(keyword)
+    self.getHourlyWeather(keyword)
+    self.checkAvailableWeather()
+  }
+  
+  @IBAction func currentLocationTapped(_ sender: UIBarButtonItem) {
     self.location.startUpdatingLocation()
+  }
+  @IBAction func refreshLocation(_ sender: UIBarButtonItem) {
+    if let keyword = self.keywords {
+      self.setupWeather(keyword: keyword)
+    }
   }
   private func getCurrentWeather(_ place: String) {
     Webservice().getCurrentWeather(place) { (result) in
@@ -131,10 +144,8 @@ extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
 extension WeatherViewController: UISearchBarDelegate {
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     if let keyword = searchBar.text {
-      self.getCurrentWeather(keyword)
-      self.setupTableView(keyword)
-      self.getHourlyWeather(keyword)
-      self.checkAvailableWeather()
+      self.keywords = keyword
+      self.setupWeather(keyword: keyword)
     }
     self.locationSearchBar.resignFirstResponder()
   }

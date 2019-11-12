@@ -302,6 +302,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Weather Today" id="QoA-DV-4eI">
+                        <barButtonItem key="leftBarButtonItem" image="current" id="27a-bY-is4">
+                            <connections>
+                                <action selector="currentLocationTapped:" destination="BYZ-38-t0r" id="CBz-7D-tMU"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="refresh" id="BqP-1R-7aY">
                             <connections>
                                 <action selector="refreshLocation:" destination="BYZ-38-t0r" id="fDW-Bv-5dx"/>
@@ -343,6 +348,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="current" width="25" height="25"/>
         <image name="empty" width="3155" height="2469"/>
         <image name="rain" width="96" height="96"/>
         <image name="refresh" width="25" height="25"/>
