@@ -14,7 +14,7 @@ struct CurrentWeatherModel: Decodable {
 struct CurrentWeather: Decodable {
   let city_name: String
   let weather: CurrentWeatherDescription
-  let temp: Int
+  let temp: Double
 }
 
 struct CurrentWeatherDescription: Decodable {

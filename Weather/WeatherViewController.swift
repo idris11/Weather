@@ -23,12 +23,8 @@ class WeatherViewController: UIViewController {
   @IBOutlet weak var tempratureLabel: UILabel!
   @IBOutlet weak var cityLabel: UILabel!
   @IBOutlet weak var descriptionLabel: UILabel!
-  @IBOutlet weak var blankViewImage: UIView!
   @IBOutlet weak var currentWeatherImage: UIImageView!
   @IBOutlet weak var hourlyWeatherCollectionView: UICollectionView!
-  var isNotAvailableCurrentWeather = false
-  var isNotAvailableDailyWeather = false
-  var isNotAvailableHourlyWeather = false
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -45,7 +41,6 @@ class WeatherViewController: UIViewController {
     self.getCurrentWeather(keyword)
     self.setupTableView(keyword)
     self.getHourlyWeather(keyword)
-    self.checkAvailableWeather()
   }
   
   @IBAction func currentLocationTapped(_ sender: UIBarButtonItem) {
@@ -59,12 +54,8 @@ class WeatherViewController: UIViewController {
   private func getCurrentWeather(_ place: String) {
     Webservice().getCurrentWeather(place) { (result) in
       if let result = result {
-        self.isNotAvailableCurrentWeather = false
         self.currentWeather = CurrentWeatherViewModel(result)
         self.setupView()
-      }
-      else {
-        self.isNotAvailableCurrentWeather = true
       }
     }
   }
@@ -84,14 +75,10 @@ class WeatherViewController: UIViewController {
       if let response = response {
         self.dailyWeatherList = DailyWeatherViewModel(response)
         DispatchQueue.main.async {
-          self.isNotAvailableDailyWeather = false
           self.tableView.reloadData()
           self.tableView.dataSource = self
           self.tableView.delegate = self
         }
-      }
-      else {
-        self.isNotAvailableDailyWeather = true
       }
     }
   }
@@ -101,24 +88,11 @@ class WeatherViewController: UIViewController {
       if let response = response {
         self.hourlyWeatherList = HourlyWeatherViewModel(hourlyListWeather: response)
         DispatchQueue.main.async {
-          self.isNotAvailableHourlyWeather = false
           self.hourlyWeatherCollectionView.reloadData()
           self.hourlyWeatherCollectionView.delegate = self
           self.hourlyWeatherCollectionView.dataSource = self
         }
       }
-      else {
-        self.isNotAvailableHourlyWeather = true
-      }
-    }
-  }
-  
-  func checkAvailableWeather() {
-    if isNotAvailableHourlyWeather || isNotAvailableDailyWeather || isNotAvailableCurrentWeather {
-      self.blankViewImage.isHidden = true
-    }
-    else {
-      self.blankViewImage.isHidden = false
     }
   }
 }
@@ -172,7 +146,6 @@ extension WeatherViewController: CLLocationManagerDelegate {
               self.getCurrentWeather(place)
               self.setupTableView(place)
               self.getHourlyWeather(place)
-              self.checkAvailableWeather()
             }
           }
         }
