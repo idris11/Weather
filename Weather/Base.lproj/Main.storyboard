@@ -267,6 +267,7 @@
                         <constraints>
                             <constraint firstItem="0Jx-D6-TpP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="FJZ-m9-9B6"/>
                             <constraint firstItem="0Jx-D6-TpP" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="geL-Pr-AhF"/>
+                            <constraint firstItem="v0Q-NI-twp" firstAttribute="top" secondItem="2Xq-6W-N2Y" secondAttribute="bottom" constant="1" id="pHo-is-JEv"/>
                             <constraint firstAttribute="bottom" secondItem="0Jx-D6-TpP" secondAttribute="bottom" id="sXX-4w-FdV"/>
                             <constraint firstAttribute="trailing" secondItem="0Jx-D6-TpP" secondAttribute="trailing" id="zdf-7L-faA"/>
                         </constraints>

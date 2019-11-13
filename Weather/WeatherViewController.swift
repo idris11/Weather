@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import MapKit
+import SVProgressHUD
 
 class WeatherViewController: UIViewController {
   var dailyWeatherList: DailyWeatherViewModel!
@@ -38,9 +39,11 @@ class WeatherViewController: UIViewController {
   }
   
   private func setupWeather(keyword: String) {
+    SVProgressHUD.show()
     self.getCurrentWeather(keyword)
     self.setupTableView(keyword)
     self.getHourlyWeather(keyword)
+    
   }
   
   @IBAction func currentLocationTapped(_ sender: UIBarButtonItem) {
@@ -91,6 +94,7 @@ class WeatherViewController: UIViewController {
           self.hourlyWeatherCollectionView.reloadData()
           self.hourlyWeatherCollectionView.delegate = self
           self.hourlyWeatherCollectionView.dataSource = self
+          SVProgressHUD.dismiss()
         }
       }
     }
@@ -143,9 +147,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
           if let geocodeLocation = response {
             guard let placemark = geocodeLocation.first else {return}
             if let place = placemark.subLocality {
-              self.getCurrentWeather(place)
-              self.setupTableView(place)
-              self.getHourlyWeather(place)
+              self.setupWeather(keyword: place)
             }
           }
         }
